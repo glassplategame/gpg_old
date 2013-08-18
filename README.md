@@ -1,4 +1,2 @@
-dos
-===
+## Glass Plate Game DOS Program
 
-Glass Plate Game DOS 
