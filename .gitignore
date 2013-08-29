@@ -1,0 +1,9 @@
+conio.o
+getinput.o
+giflist.o
+gpg.o
+gpgdos.dev
+gpgdos.layout
+gpgdos.exe
+Makefile.win
+

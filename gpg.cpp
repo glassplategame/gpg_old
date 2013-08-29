@@ -79,8 +79,8 @@ char * gifs[41] = {"none", "Ambivalence", "Anthropomorphism",
 
 char * gifs2[41] = {"Ambivalenz","Anthropomorphismus","Kunst und Natur",
  "UnerwÅnschte Verbindungen","Die Stadt als Kunstwerk","Coding",
- "Kontemplation","Sch"pfung","Ausbildung","GefÅhlmanipulation",
- "Freiheit","Gestalt","Harmonie","Kampf","Versteckte M"glichkeiten",
+ "Kontemplation","Sch\"pfung","Ausbildung","GefÅhlmanipulation",
+ "Freiheit","Gestalt","Harmonie","Kampf","Versteckte M\"glichkeiten",
  "Intuition","Freude","Magik","Multiplikation des mechanishen Vorteils",
  "Metamorphose","Geldwert","Mythen","Natur entwickelt sich zur Perfektion",
  "Ontogenie wiederholt Phylogenie","Perspektive",
@@ -96,8 +96,8 @@ int cube_of_move = 1;
 int previous_player = 0;
 int ruling, move_request;
 int request_cnt = 0;
-char line_response[10];
-previous_of_color[5] = {0, 0, 0, 0, 0};
+char line_response[10],
+     previous_of_color[5] = {0, 0, 0, 0, 0};
 typedef cube_status cubes_status[25];
 cubes_status cubes, cubes2, moves;
 const char side[6] = {'#','p','c','o',' '};
@@ -125,11 +125,16 @@ void get_transcript( cubes_status &moves, char * filename);
 void print_cards(char language);
 void menue_or_not(char * response, int language_mnot);
 void get_comment(int, int);
-
+void clrscr();
+int
+gettext (int left, int top, int right, int bottom,
+  char *str);
+  void
+puttext (int left, int top, int right, int bottom, char *str);
 /* end of global declarations; beginning of function bodies */
 
 
-void main()
+int main()
 {
   char  response_mn = 'z';
   clrscr();
@@ -282,7 +287,7 @@ if (response_mn != 'q')
      if (response_mn == 'r')
      {
        is_replay = 1;
-       window(1,1,80,24);
+//       window(1,1,80,24);
        clrscr();
        printf("Wait ... disk being accessed.");
        get_transcript(cubes2, filenames[disk_choice]);
@@ -316,16 +321,16 @@ if (response_mn != 'q')
      printf("     action   cube   player   card    color   side    from");
      stats = 3;
      keep_playing = 1;
-     window(1,11,80,24);
+    // window(1,11,80,24);
      clrscr();
      while (keep_playing)
      {
-	 window(1,11,80,24);
+	 //window(1,11,80,24);
 	 printf("\n");
 	 keep_playing = get_Move();
      }
    }
-   window(1,1,80,25);
+   //window(1,1,80,25);
    clrscr();
    printf("wait ... disk being accessed.");
    if (is_replay == 0)
@@ -333,23 +338,23 @@ if (response_mn != 'q')
       store_transcript(cubes, filenames[disk_choice]);
    }
    get_transcript(cubes2, filenames[disk_choice]);
-   window(1,1,80,25);
+   //window(1,1,80,25);
    clrscr();
    printf("cube  player card color side from\n");
    for (j = 1; j <= 12; j++)
    {
-      window(1,j+1,40,24);
+      //window(1,j+1,40,24);
       printf(" %-2d      %d     %-2d   ",j,cubes2[j].player,cubes2[j].card);
       printf("%d    %d    ", cubes2[j].color, cubes2[j].state);
       printf("%-2d  \n",      cubes2[j].from_what_cube);
    }    /* Works fine for just raw data from the cubes array */
-   window(40,1,80,24);
+   //window(40,1,80,24);
    printf("cube  player card color side from\n");
    j = 1;
    for (k = 13; k <= 24; k++)
    {
       j++;
-      window(40,j,80,24);
+      //window(40,j,80,24);
       printf(" %-2d      %d     %-2d   ",k,cubes2[k].player,cubes2[k].card);
       printf("%d    %d    ", cubes2[k].color,  cubes2[k].state);
       printf("%-2d  \n",  cubes2[k].from_what_cube);
@@ -455,7 +460,7 @@ if((language == 'e') || (language == 'E'))
 if((language == 'g') || (language == 'G'))
     language_row_r = 1;
 
-    window(1,13,80,24);
+    //window(1,13,80,24);
     ruling = allowed;
     if (move_type_r == 0)
        ruling = disallowed;
@@ -851,7 +856,7 @@ prompt[1][22] = "Spieler Nummer oder 'q' zum beenden? ( # / q) ";
       }
    }
    move_request = allowed;
-   window(1,11,80,25);
+   //window(1,11,80,25);
    if (is_replay == 0)
    {
       player_m = get1char(prompt[language_row_m][22]);
@@ -1340,9 +1345,9 @@ prompt[1][22] = "Spieler Nummer oder 'q' zum beenden? ( # / q) ";
 	}
 
    }
-   window(1,11,80,23);  /* clear a screen for report in case of a */
+   //window(1,11,80,23);  /* clear a screen for report in case of a */
    clrscr();            /* move that is rejected */
-   window(1,20,80,24);  /* have any problems report start a ways down */
+   //window(1,20,80,24);  /* have any problems report start a ways down */
    clrscr();            /* from the top of that screen area */
 
    if(rule_on_move(move_type_m, cube_m, player_m, card_m,
@@ -1354,13 +1359,13 @@ prompt[1][22] = "Spieler Nummer oder 'q' zum beenden? ( # / q) ";
       {
 	 if(move_type_m == 5)
 	 {
-	    window(1,11,80,24);
+	    //window(1,11,80,24);
 	    clrscr();
 	    get_comment(move_type_m, cube_m);
 	 }
 	 if ((move_type_m == 2) || (move_type_m == 3))
 	 {
-	      window(1,11,80,24);
+	      //window(1,11,80,24);
 	      clrscr();
 	      get_comment(move_type_m, cube_m);
 	 }
@@ -1371,7 +1376,7 @@ prompt[1][22] = "Spieler Nummer oder 'q' zum beenden? ( # / q) ";
 	  gif_g = gifs2[cubes2[cubes2[replay_cube].from_what_cube].card];
 	  if((move_type_m == 2) || (move_type_m == 3))
 	  {
-	      window(1,14,80,24);
+	      //window(1,14,80,24);
 	      clrscr();
 	      printf("\n",relatn[language_row_m]);
 	      printf("%s ->",gif_e);
@@ -1382,7 +1387,7 @@ prompt[1][22] = "Spieler Nummer oder 'q' zum beenden? ( # / q) ";
 	  }
 	  if(move_type_m == 5)
 	  {
-	      window(1,14,80,24);
+	      //window(1,14,80,24);
 	      clrscr();
 	      printf("%s ",ch[language_row_m]);
 	      printf("%s ->", gif_g);
@@ -1405,13 +1410,13 @@ prompt[1][22] = "Spieler Nummer oder 'q' zum beenden? ( # / q) ";
       previous_of_color[color_m] = cube_m;
       if((move_type_m < 4) && (move_type_m > 0))
 	   cube_of_move = cube_of_move + 1;
-      window(1,stats,80,11);
+      //window(1,stats,80,11);
       stats++;
       request_cnt++;
       if(stats >= 12)
       {
-	  movetext(1,4,80,11,1,3);  /* scroll the stats display to keep */
-	  window(1,10,80,11);       /* it from spilling into user dialogue */
+	 // movetext(1,4,80,11,1,3);  /* scroll the stats display to keep */
+	  //window(1,10,80,11);       /* it from spilling into user dialogue */
 	  stats = stats - 1;
       }
 	 printf("%2d%c",request_cnt,')');
@@ -1432,7 +1437,7 @@ prompt[1][22] = "Spieler Nummer oder 'q' zum beenden? ( # / q) ";
    }
    else
    {
-       window(1,22,80,24);
+       //window(1,22,80,24);
        printf(" ?%c ",')');
        printf("   %-6d", action[language_row_m][move_type_m]);
        printf(" %-6d  ", cube_m);
@@ -1512,7 +1517,7 @@ void menue_or_not(char * response, int language_mnot)
   do
   {
     puttext(1,12,80,24,moves_screen);
-    window(1,20,80,24);
+    //window(1,20,80,24);
     clrscr();
     printf("\nPlace cube on what card? Press ? for card list. (1 - 40, ?)");
     gets(line_response);
@@ -1534,7 +1539,7 @@ line, a condition.
 */
  void get_comment(int move_type_c, int cube_c)      /* variable 'player_comment' would need */
 {                   /* declaration for this function to be activated */
-   window(1,12,80,24);
+   //window(1,12,80,24);
    clrscr();
    char response_g;
    char input[80];
@@ -1676,7 +1681,7 @@ line, a condition.
       }
    }
    move_type_c = 0;
-   window(1,11,80,24);
+   //window(1,11,80,24);
 	 clrscr();
 }
 

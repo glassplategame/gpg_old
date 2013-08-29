@@ -52,8 +52,8 @@ int get1char(char *prompt)
 	while ((c = getchar()) == ' ' || c == '\t')
 		;
 	if (c == '\n')
-		return(0);<year>  <name of author>
-	while (getchar() !=<year>  <name of author> '\n' && !feof(stdin))
+		return(0);
+	while (getchar() != '\n' && !feof(stdin))
 		;
 	return(tolower(c));
 }

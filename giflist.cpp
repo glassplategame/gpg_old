@@ -25,7 +25,7 @@
 #include <conio.h>                       /* trace directory */
 extern void print_cards(char language);
 extern int get1char(char *prompt);
-
+void clrscr();
 void print_cards(char language)
 {
 char list = 'a', response_gl;
@@ -36,8 +36,8 @@ if(language == 'e')
 
  if(list == 'a')
  {
-  window(1,11,80,24);
-  clrscr();
+  //window(1,11,80,24);
+ // clrscr();
   printf("1.  Ambivalence                      20. Metamorphosis\n");
   printf("2.  Anthropomorphism                 21. Monetary Value\n");
   printf("3.  Art vs. Nature                   22. Myth\n");
@@ -52,7 +52,7 @@ printf("6.  Coding                           24. Ontogeny Recapitulating\n");
  }
  if(list == 'b')
  {
- window(1,11,80,24);
+// window(1,11,80,24);
  clrscr();
  printf("11. Freedom                          29. Structural Strength\n");
 printf("12. Gestalt                          30. Structured Improvisation\n");
@@ -78,14 +78,14 @@ printf("12. Gestalt                          30. Structured Improvisation\n");
 	 list = 'a';
     }
   }   // endwhile in English
-  window(1,11,80,24);
+  //window(1,11,80,24);
   clrscr();
 if(language == 'g')
  while(response_gl != 'c')
  {
   if(list == 'a')
   {
-     window(1,11,80,24);
+    // window(1,11,80,24);
      clrscr();
      printf("1.  Ambivalenz\n");
      printf("2.  Anthropomorphismus\n");
@@ -94,19 +94,19 @@ if(language == 'g')
      printf("5.  Die Stadt als Kunstwerk\n");
      printf("6.  Coding\n");
      printf("7.  Kontemplation\n");
-     printf("8.  Sch"pfung\n");
+     printf("8.  Sch\"pfung\n");
      printf("9.  Ausbildung und Erziehung\n");
      printf("10. Manipulation von GefÅhlen\n");
   }
   if(list == 'b')
   {
-     window(1,11,80,24);
+  //   window(1,11,80,24);
      clrscr();
      printf("11. Freiheit\n");
      printf("12. Gestalt\n");
      printf("13. Harmonie\n");
      printf("14. Kampf\n");
-     printf("15. Unentdeckte M"glichkeiten\n");
+     printf("15. Unentdeckte M\"glichkeiten\n");
      printf("16. Intuition\n");
      printf("17. Freude\n");
      printf("18. Magik\n");
@@ -115,7 +115,7 @@ if(language == 'g')
   }
   if(list == 'c')
       {
-      window(1,11,80,24);
+  //    window(1,11,80,24);
       clrscr();
       printf("21. Geldwert\n");
       printf("22. Mythen\n");
@@ -130,7 +130,7 @@ if(language == 'g')
       }
    if(list == 'd')
       {
-      window(1,11,80,24);
+  //    window(1,11,80,24);
       clrscr();
       printf("31.  (like some other card)\n");
       printf("32. Synergetik\n");
@@ -168,7 +168,7 @@ if(language == 'g')
 	}
       }  /*  endif toggle  */
   }  /*  endwhile in German */
-  window(1,11,80,24);
+//  window(1,11,80,24);
   clrscr();
 }
 
