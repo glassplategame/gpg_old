@@ -1,2 +1,2 @@
-## Glass Plate Game DOS Program
+## Glass Plate Game Command Line
 
